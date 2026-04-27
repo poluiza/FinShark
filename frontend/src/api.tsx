@@ -9,9 +9,9 @@ interface SearchResponse {
 export const searchComponies = async (query: string) => {
     try {
         const data = await axios.get<SearchResponse>(
-            `https://twelvedata.com/account/api-keys=${process.env.REACT_APP_API_KEY}`
+            `https://api.twelvedata.com/symbol_search?symbol=${query}&apikey=${process.env.REACT_APP_API_KEY}`
         );
-        return data;
+        return data.data.data;
     }
 
     catch (error) {
