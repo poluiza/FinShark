@@ -6,7 +6,7 @@ interface Props {
   handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Search: React.FC<Props> = (props: Props) : JSX.Element=> {
+const Search: React.FC<Props> = ({onSearchSubmit, handleSearchChange}: Props) : JSX.Element=> {
     const [search,setSearch] = useState<string>("");
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) =>{

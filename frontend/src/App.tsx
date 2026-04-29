@@ -7,7 +7,7 @@ import { searchComponies } from './api';
 
 function App() {
   const [search, setSearch] = useState<string>("");
-  const [searchResult, setSearchResult] = useState<CompanySearch[]>();
+  const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
   const [serverError, setServerError] = useState<string | null>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +33,8 @@ function App() {
     <div className='App'>
       <Search onClick={onClick} search={search} handleChange={handleChange}/>
       {serverError && <h1>{serverError}</h1>}
-      <CardList />
+      <CardList searchResults={searchResult}/>
+      {serverError && <div> Unable to connect to API</div>}
     </div>
   );
 }
