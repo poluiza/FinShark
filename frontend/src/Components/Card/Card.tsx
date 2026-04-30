@@ -1,7 +1,7 @@
 import React, { JSX, SyntheticEvent } from "react";
 import './Card.css';
 import { CompanySearch } from "../../company";
-import AddPortfolio from "../Portfolio/AddPortfolio";
+import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
 
 interface Props {
     id: string;
