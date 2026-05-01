@@ -1,4 +1,4 @@
-import React, { ChangeEvent, SyntheticEvent, useState} from 'react';
+import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
 import './App.css';
 import CardList from './Components/CardList/CardList';
 import Search from './Components/Search/Search';
@@ -17,13 +17,21 @@ function App() {
     console.log(e);
   };
 
-  const onPortfolioCreate = (e: any) =>{
+  const onPortfolioCreate = (e: any) => {
     e.preventDefault();
-    const exists = PortfolioValues.find((value) => value ===e.target[0].value)
-    if(exists) return;
+    const exists = PortfolioValues.find((value) => value === e.target[0].value)
+    if (exists) return;
     const updatePortfolio = [...PortfolioValues, e.target[0].value];
     setPortfolioValues(updatePortfolio);
   }
+
+  const onPortfolioDelete = (e: any) => {
+    e.preventDefault();
+    const removed = PortfolioValues.filter((value) => {
+      return value !== e.target[0].value;
+    });
+    setPortfolioValues(removed);
+  };
 
   const onSearchSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -42,11 +50,24 @@ function App() {
 
   return (
     <div className='App'>
-      <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange}/>
-      {serverError && <h1>{serverError}</h1>}
-     <ListPortfolio PortfolioValues={PortfolioValues}/>
-      <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate}/>
+      <Search 
+        onSearchSubmit={onSearchSubmit} 
+        search={search} 
+        handleSearchChange={handleSearchChange} 
+      />
+      
+      <ListPortfolio 
+        portfolioValues={PortfolioValues} 
+        onPortfolioDelete={onPortfolioCreate}
+      />
+
+      <CardList 
+        searchResults={searchResult} 
+        onPortfolioCreate={onPortfolioCreate}
+      />
+
       {serverError && <div> Unable to connect to API</div>}
+      
     </div>
   );
 }
