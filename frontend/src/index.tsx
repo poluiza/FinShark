@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-console.log(searchComponies("tsla"));
+//console.log(searchComponies("tsla"));
 
 root.render(
   <React.StrictMode>
