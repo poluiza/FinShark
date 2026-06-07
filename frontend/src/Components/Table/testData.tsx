@@ -30,7 +30,7 @@ export const TestDataCompany = [
     zip: "95014",
     dcfDiff: 89.92,
     dcf: 148.019,
-    image: "https://financialmodelingprep.com/image-stock/AAPL.png",
+    image: "",
     ipoDate: "1980-12-12",
     defaultImage: false,
     isEtf: false,

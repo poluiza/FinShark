@@ -37,16 +37,20 @@ namespace api.Mappers
             };
         }
 
-        public static Stock ToStockFromFMP(this FMPStock fmpStock)
+        public static Stock ToStockFromFinnhub(this FinnhubProfile profile, FinnhubQuote? quote)
         {
+            var marketCap = profile.MarketCapitalization > 0
+                ? (long)(profile.MarketCapitalization * 1_000_000)
+                : 0;
+
             return new Stock
             {
-                Symbol = fmpStock.symbol,
-                CompanyName = fmpStock.companyName,
-                Purchase = (decimal)fmpStock.price,
-                LastDiv = (decimal)fmpStock.lastDiv,
-                Industry = fmpStock.industry,
-                MarketCap = fmpStock.mktCap
+                Symbol = profile.Ticker ?? string.Empty,
+                CompanyName = profile.Name ?? string.Empty,
+                Purchase = quote?.C ?? 0,
+                LastDiv = 0,
+                Industry = profile.FinnhubIndustry ?? string.Empty,
+                MarketCap = marketCap
             };
         }
     }

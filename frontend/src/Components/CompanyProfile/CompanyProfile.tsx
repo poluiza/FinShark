@@ -90,7 +90,7 @@ const CompanyProfile = (props: Props) => {
       setCompanyData(value?.data[0]);
     };
     getCompanyKeyRatios();
-  }, []);
+  }, [ticker]);
   return (
     <>
       {companyData ? (

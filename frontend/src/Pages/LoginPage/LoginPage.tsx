@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../Context/useAuth";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -80,12 +81,12 @@ const LoginPage = (props: Props) => {
                 )}
               </div>
               <div className="flex items-center justify-between">
-                <a
-                  href="#"
+                <button
+                  type="button"
                   className="text-sm text-white font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Forgot password?
-                </a>
+                </button>
               </div>
               <button
                 type="submit"
@@ -95,12 +96,12 @@ const LoginPage = (props: Props) => {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
-                <a
-                  href="#"
+                <Link
+                  to="/register"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Sign up
-                </a>
+                </Link>
               </p>
             </form>
           </div>

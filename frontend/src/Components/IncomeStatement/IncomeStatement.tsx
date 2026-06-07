@@ -87,7 +87,7 @@ const IncomeStatement = (props: Props) => {
       setIncomeStatement(result!.data);
     };
     getRatios();
-  }, []);
+  }, [ticker]);
   return (
     <>
       {incomeStatement ? (

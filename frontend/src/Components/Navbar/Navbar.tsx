@@ -24,12 +24,13 @@ const Navbar = (props: Props) => {
         {isLoggedIn() ? (
           <div className="hidden lg:flex items-center space-x-6 text-back">
             <div className="hover:text-darkBlue">Welcome, {user?.userName}</div>
-            <a
+            <button
+              type="button"
               onClick={logout}
               className="px-8 py-3 font-bold rounded text-white bg-lightGreen hover:opacity-70"
             >
               Logout
-            </a>
+            </button>
           </div>
         ) : (
           <div className="hidden lg:flex items-center space-x-6 text-back">

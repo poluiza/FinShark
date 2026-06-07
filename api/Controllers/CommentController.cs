@@ -21,15 +21,15 @@ namespace api.Controllers
         private readonly ICommentRepository _commentRepo;
         private readonly IStockRepository _stockRepo;
         private readonly UserManager<AppUser> _userManager;
-        private readonly IFMPService _fmpService;
+        private readonly IFinnhubService _finnhubService;
         public CommentController(ICommentRepository commentRepo,
         IStockRepository stockRepo, UserManager<AppUser> userManager,
-        IFMPService fmpService)
+        IFinnhubService finnhubService)
         {
             _commentRepo = commentRepo;
             _stockRepo = stockRepo;
             _userManager = userManager;
-            _fmpService = fmpService;
+            _finnhubService = finnhubService;
         }
 
         [HttpGet]
@@ -73,7 +73,7 @@ namespace api.Controllers
 
             if (stock == null)
             {
-                stock = await _fmpService.FindStockBySymbolAsync(symbol);
+                stock = await _finnhubService.FindStockBySymbolAsync(symbol);
                 if (stock == null)
                 {
                     return BadRequest("Stock does not exists");
